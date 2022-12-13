@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Fake Product Identification</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container-fluid px-md-5">
+			<div class="row justify-content-between">
+				<div class="col-md-8 order-md-last">
+					<div class="row">
+						<div class="col-md-6 text-center">
+							<a class="navbar-brand" href="index.html">Fake Product Identification <span>through Blockchain</span></a>
+						</div>
+						<div class="col-md-6 d-md-flex justify-content-end mb-md-0 mb-3">
+							<form action="#" class="searchform order-lg-last">
+			          
+			        </form>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 d-flex">
+					<div class="social-media">
+		    		
+	        </div>
+				</div>
+			</div>
+		</div>
+		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container-fluid">
+	    
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="fa fa-bars"></span> Menu
+	      </button>
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav m-auto">
+	        	<li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+			  	<li class="nav-item "><a href="manufacturer.html" class="nav-link">Manufacturer</a></li>
+	        	<li class="nav-item"><a href="seller.html" class="nav-link">Seller</a></li>
+	          	<li class="nav-item"><a href="consumer.html" class="nav-link">Consumer</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+	</section>
+    <section>
+        <div class="container">
+            <h2>Sell Product to Consumer</h2>
+
+			<section>
+				<div class="container-fluid">
+					<center>
+						<div id="qr-reader" style="width:300px"></div>
+						<div id="qr-reader-results"></div>
+					</center>
+				</div>
+			</section>
+
+			<div>
+				<table width="100%">
+					<tr width="100%">
+						<td width="15%" align="center">
+						<label for="productSN">Product SN:</label>
+						</td>
+						<td width = "30%">
+						<input disabled class="form-control" id="productSN" name="productSN" type="text" />
+						</td>
+						<td width="15" align="center">
+						<label for="consumerCode">Consumer Code</label>
+						</td>
+						<td width = "30%" >
+						<input class="form-control" id="consumerCode" name="consumerCode" type="text" />
+						</td>
+					</tr>
+						
+				</table>
+			  </div>
+			  <div class="clear">&nbsp;</div>
+
+
+              
+              
+              <button type="submit" class="btn btn-warning btn-register" id="register">Sell to Consumer</button>
+          </div>
+    </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+  <script src="js/sellProductSeller.js"></script>
+  <script src="https://unpkg.com/html5-qrcode"></script>
+  <script>
+	var decodedText = "Enter Product SN";
+    function docReady(fn) {
+        // see if DOM is already available
+        if (document.readyState === "complete"
+            || document.readyState === "interactive") {
+            // call on next available tick
+            setTimeout(fn, 1);
+        } else {
+            document.addEventListener("DOMContentLoaded", fn);
+        }
+    }
+
+    docReady(function () {
+        var resultContainer = document.getElementById('qr-reader-results');
+        var lastResult, countResults = 0;
+        function onScanSuccess(decodedText, decodedResult) {
+            if (decodedText !== lastResult) {
+                ++countResults;
+                lastResult = decodedText;
+                // Handle on success condition with the decoded message.
+                var audio = new Audio('beep.wav');
+                audio.play();
+                // console.log(`Scan result ${decodedText}`, decodedResult);
+                document.getElementById('qr-reader-results').innerHTML=decodedText;
+				document.getElementById("productSN").value = decodedText;
+				//App.init(decodedText);
+                
+            }
+        }
+
+        var html5QrcodeScanner = new Html5QrcodeScanner(
+            "qr-reader", { fps: 10, qrbox: 250 });
+        html5QrcodeScanner.render(onScanSuccess);
+    });
+  </script>
+  </body>
+</html>

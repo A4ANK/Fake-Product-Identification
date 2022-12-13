@@ -1,0 +1,288 @@
+@import 'bootstrap/bootstrap';
+@import 'bootstrap/variables';
+@import 'bootstrap/mixins';
+
+$font-primary: 'Poppins',Arial, sans-serif;
+$primary: #ff0000;
+
+body{
+	font-family: $font-primary;
+	font-size: 16px;
+	line-height: 1.8;
+	font-weight: normal;
+	background: #fafafa;
+	color: lighten($black,50%);
+}
+a {
+	transition: .3s all ease;
+	color: $primary;
+	&:hover, &:focus {
+		text-decoration: none !important;
+		outline: none !important;
+		box-shadow: none;
+	}
+}
+h1, h2, h3, h4, h5,
+.h1, .h2, .h3, .h4, .h5 {
+	line-height: 1.5;
+	font-weight: 400;
+	font-family: $font-primary;
+	color: $black;
+}
+
+.bg-primary{
+	background: $primary !important;
+}
+
+.ftco-section{
+	padding: 7em 0;
+}
+
+.ftco-no-pt{
+	padding-top: 0;
+}
+.ftco-no-pb{
+	padding-bottom: 0;
+}
+//HEADING SECTION
+.heading-section{
+	font-size: 28px;
+	color: $black;
+}
+
+//COVER BG
+.img{
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+
+
+
+.ftco-navbar-light {
+	background: #252525 !important;
+	z-index: 3;
+	padding: 0;
+	@include media-breakpoint-down(md) {
+		background: $black!important;
+		position: relative;
+		top: 0;
+		padding: 10px 15px;
+	}
+
+	.navbar-nav {
+		@include media-breakpoint-down(md){
+			padding-bottom: 10px;
+		}
+		> .nav-item {
+			> .nav-link {
+				font-size: 11px;
+				padding-top: 1.5rem;
+				padding-bottom: 1.5rem;
+				padding-left: 20px;
+				padding-right: 20px;
+				font-weight: 500;
+				color: $white;
+				text-transform: uppercase;
+				letter-spacing: 2px;
+				position: relative;
+				&:before{
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					content: '';
+			    display: block;
+			    width: 0;
+			    height: 2px;
+			    background: $primary;
+			    @include transition(.3s);
+				}
+				&:hover {
+					color: $primary;
+					&:before{
+				    width: 100%;
+					}
+				}
+				opacity: 1!important;
+				@include media-breakpoint-down(md){
+					padding-left: 0;
+					padding-right: 0;
+					padding-top: .7rem;
+					padding-bottom: .7rem;
+					color: rgba(255,255,255,.7);
+					&:hover{
+						color: $white;
+					}
+				}
+				@include media-breakpoint-down(sm){
+					border-bottom: 1px solid rgba(255,255,255,.2);
+				}
+			}
+
+			.dropdown-menu{
+				border: none;
+				background: $white;
+				-webkit-box-shadow: 0px 10px 34px -20px rgba(0,0,0,0.41);
+				-moz-box-shadow: 0px 10px 34px -20px rgba(0,0,0,0.41);
+				box-shadow: 0px 10px 34px -20px rgba(0,0,0,0.41);
+				border-radius: 4px;
+				.dropdown-item{
+					font-size: 12px;
+					color: $black;
+					&:hover, &:focus{
+						background: $primary;
+						color: $white;
+					}
+				}
+				@include media-breakpoint-down(md){
+					display: block !important;
+					background: $black;
+					.dropdown-item{
+						color: rgba(255,255,255,.8);
+					}
+				}
+			}
+
+			
+			&.cta {
+				> a {
+					color: $white;
+					background: $primary;
+					border-radius: 0px;
+					@include media-breakpoint-down(sm){
+						padding-left: 15px;
+						padding-right: 15px;
+					}
+					@include media-breakpoint-down(md){
+						color: $white;
+						background: $primary;
+						border-radius: 4px;
+					}
+				}
+			}
+			&.active {
+				> a {
+					color: $primary;
+					@include media-breakpoint-down(md){
+						color: $white;
+					}
+				}
+			}
+		}
+	}
+	
+	.navbar-toggler {
+		border: none;
+		color: rgba(255,255,255,.5)!important;
+		cursor: pointer;
+		padding-right: 0;
+		text-transform: uppercase;
+		font-size: 16px;
+		letter-spacing: .1em;
+		&:focus{
+			outline: none !important;
+		}
+	}
+}
+
+
+.navbar-brand {
+	color: $black;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 1.2;
+	margin-bottom: 30px;
+	span{
+		display: block;
+		font-size: 12px;
+		font-weight: 500;
+		color: rgba(0,0,0,.3);
+	}
+	&:hover, &:focus{
+		color: $black;
+	}
+}
+
+
+.social-media{
+	display: inline-block;
+	@include media-breakpoint-down(md){
+		margin: 0 auto;
+	}
+	@include media-breakpoint-down(sm){
+		margin-bottom: 20px;
+	}
+	p{
+		a{
+			border: 1px solid lighten($black,90%);
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			margin-right: 4px;
+			span{
+				color: lighten($black,30%);
+			}
+			&:hover{
+				background: $primary;
+				border-color: $primary;
+				span{
+					color: $white;
+				}
+			}
+		}
+	}
+}
+
+
+.searchform{
+	height:50px;
+	border: 1px solid rgba(255,255,255,.1);
+	overflow: hidden;
+	@include border-radius(40px);
+	@include media-breakpoint-up(lg){
+		width: 300px;
+	}
+	.form-control{
+		width: calc(100% - 50px);
+		border: none;
+		background: #fff !important;
+		color: rgba(0,0,0,.7) !important;
+		font-size: 14px;
+		&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+		  color: rgba(0,0,0,.7) !important;
+		}
+		&::-moz-placeholder { /* Firefox 19+ */
+		  color: rgba(0,0,0,.7) !important;
+		}
+		&:-ms-input-placeholder { /* IE 0+ */
+		  color: rgba(0,0,0,.7) !important;
+		}
+		&:-moz-placeholder { /* Firefox 18- */
+		  color: rgba(0,0,0,.7) !important;
+		}
+	}
+	.search{
+		width: 50px;
+		height: 50px;
+		background: $primary !important;
+		span{
+			font-size: 16px;
+			color: $white;
+		}
+	}
+}
+
+.form-control {
+	height: 50px!important;
+	background: $white!important;
+	color: $black!important;
+	font-size: 14px;
+	border-radius: 0px;
+	box-shadow: none!important;
+	border: 1px solid rgba(0,0,0,.1);
+	&:focus, &:active {
+		border-color: $black;
+	}
+}
