@@ -34,11 +34,3 @@
         $ npm run dev , this will open index.html file in browser
     7. Login to metamask ,and connect the added account to local blockchain (i.e.localhost:3000)
     8. Interact with website
-
-
-
-
-
-
-    
-
